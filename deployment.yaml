@@ -34,8 +34,6 @@ spec:
         ports:
         - containerPort: 5000
       dnsPolicy: ClusterFirst
-      imagePullSecrets:
-      - name: quayregistrykey
       restartPolicy: Always
       securityContext: {}
       terminationGracePeriodSeconds: 30
