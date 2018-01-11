@@ -1,22 +1,15 @@
-pipeline {
-    agent {
-        docker {
-            image 'node:6-alpine' 
-            args '-p 3000:3000 -u root' 
-        }
+node('master') {
+    stage("Prepare environment") {
+        checkout scm
+        // Build the Docker image from the Dockerfile located at the root of the project
+        docker.build("${JOB_NAME}")
     }
-    stages {
-        stage('checkout') { 
-            steps {
-                checkout scm 
-            }
-        }
-    }
-    stages {
-        stage('Build') { 
-            steps {
-                sh 'npm install' 
-            }
+
+    stage("Install dependencies") {
+        // Run the container as `root` user
+        // Note: you can run any official Docker image here
+        withDockerContainer(args: "-u root", image: "node:6-alpine") {
+            sh "npm install"
         }
     }
 }
