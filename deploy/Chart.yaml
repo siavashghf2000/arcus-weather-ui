@@ -1,4 +1,4 @@
 apiVersion: v1
-description: A Helm chart for Kubernetes
-name: deploy
+description: arcus_weather_ui Helm chart for Kubernetes
+name: arcus_weather_ui
 version: 0.1.0
