@@ -6,4 +6,6 @@ WORKDIR /app
 RUN chmod +x run.sh && \
     ./run.sh
 
+EXPOSE 5000
+
 CMD ["serve", "-s", "build"]
